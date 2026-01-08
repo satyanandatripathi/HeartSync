@@ -18,8 +18,10 @@ export default function ConnectionSetup() {
     // Next.js makes NEXT_PUBLIC_* vars available at build time
     const productionSignalingServer = process.env.NEXT_PUBLIC_SIGNALING_SERVER;
     
+    // Always prioritize production URL if set
     if (productionSignalingServer) {
       setSignalingServer(productionSignalingServer);
+      return; // Don't run IP detection if production URL is set
     }
 
     // First, check if we're already accessing via IP address
@@ -56,8 +58,10 @@ export default function ConnectionSetup() {
             if (ipMatch && !ipMatch[0].startsWith('127.')) {
               setLocalIP(ipMatch[0]);
               setStoreIP(ipMatch[0]);
-              // Set signaling server when IP is detected
-              setSignalingServer(`http://${ipMatch[0]}:3001`);
+              // Only set signaling server if production URL is not set
+              if (!productionSignalingServer) {
+                setSignalingServer(`http://${ipMatch[0]}:3001`);
+              }
             }
           }
         };
