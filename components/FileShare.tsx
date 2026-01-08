@@ -52,7 +52,7 @@ export default function FileShare() {
       id: metadata.id,
       name: metadata.name,
       size: metadata.size,
-      type: metadata.type,
+      type: metadata.fileType || metadata.type,
       data: '',
       sender: 'partner',
       timestamp: new Date(),
@@ -98,7 +98,7 @@ export default function FileShare() {
         id: fileId,
         name: file.name,
         size: file.size,
-        type: file.type,
+        fileType: file.type,
       }));
 
       // Read and send file in chunks
