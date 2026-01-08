@@ -1,0 +1,32 @@
+services:
+  # Next.js App Service
+  - type: web
+    name: heartsync-app
+    env: node
+    region: oregon  # Change to your preferred region
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    plan: free  # Change to 'starter' for $7/month (always-on, no cold starts)
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SIGNALING_SERVER
+        value: https://heartsync-signaling.onrender.com  # Will be set after signaling server is deployed
+    healthCheckPath: /
+    autoDeploy: true
+
+  # Signaling Server Service
+  - type: web
+    name: heartsync-signaling
+    env: node
+    region: oregon  # Same region for lower latency
+    buildCommand: npm install
+    startCommand: node server.js
+    plan: free  # Change to 'starter' for $7/month (always-on, no cold starts)
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /
+    healthCheckGracePeriod: 300
+    autoDeploy: true
+

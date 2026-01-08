@@ -1,0 +1,10 @@
+node_modules
+.next
+.env*.local
+server.js
+check-ports.js
+test-connection.js
+DEPLOY.md
+WINDOWS_SETUP.md
+START.md
+
