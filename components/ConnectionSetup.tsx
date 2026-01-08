@@ -251,7 +251,7 @@ export default function ConnectionSetup() {
           <div className="text-center text-sm text-purple-300 mt-2 space-y-1">
             <p>Make sure the signaling server is running on port 3001</p>
             <p className="text-xs text-purple-400">
-              Check terminal for: "Signaling server running on http://0.0.0.0:3001"
+              Check terminal for: &quot;Signaling server running on http://0.0.0.0:3001&quot;
             </p>
           </div>
         )}
