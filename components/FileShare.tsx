@@ -185,26 +185,27 @@ export default function FileShare() {
 
       <div className="flex-1 overflow-y-auto p-4">
         {/* Upload Area */}
-        <motion.div
-          {...getRootProps()}
-          whileHover={{ scale: 1.02 }}
-          className={`glass rounded-2xl p-12 mb-6 cursor-pointer border-2 border-dashed transition-all ${
-            isDragActive
-              ? 'border-purple-500 bg-purple-500/10'
-              : 'border-purple-500/30 hover:border-purple-500/50'
-          }`}
-        >
-          <input {...getInputProps()} />
-          <div className="text-center">
-            <Upload className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-            <p className="text-xl font-semibold mb-2">
-              {isDragActive ? 'Drop files here' : 'Drag & drop files here'}
-            </p>
-            <p className="text-purple-200 text-sm">
-              or click to select files
-            </p>
-          </div>
-        </motion.div>
+        <div {...getRootProps()}>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className={`glass rounded-2xl p-12 mb-6 cursor-pointer border-2 border-dashed transition-all ${
+              isDragActive
+                ? 'border-purple-500 bg-purple-500/10'
+                : 'border-purple-500/30 hover:border-purple-500/50'
+            }`}
+          >
+            <input {...getInputProps()} />
+            <div className="text-center">
+              <Upload className="w-16 h-16 text-purple-400 mx-auto mb-4" />
+              <p className="text-xl font-semibold mb-2">
+                {isDragActive ? 'Drop files here' : 'Drag & drop files here'}
+              </p>
+              <p className="text-purple-200 text-sm">
+                or click to select files
+              </p>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Files List */}
         <div className="space-y-3">
